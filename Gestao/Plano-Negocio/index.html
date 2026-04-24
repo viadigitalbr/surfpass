@@ -93,7 +93,7 @@
 
   .plan-name { font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 20px; color: var(--dark); margin-bottom: 4px; }
   .plan-credits { font-size: 13px; color: var(--mid); margin-bottom: 20px; }
-  .plan-credits strong { color: var(--ocean); font-size: 15px; }
+  .plan-credits strong { color: var(--ocean); font-size: 19px; }
 
   /* Bloco mensal */
   .plan-monthly-block { margin-bottom: 4px; }
@@ -207,7 +207,7 @@
         </div>
       </div>
 
-      <button class="cta-avulso" id="cta-avulso">Comprar 20 créditos por R$ 513 →</button>
+      <button class="cta-avulso" id="cta-avulso">Comprar 20 créditos por 3x de R$ 171 →</button>
     </div>
   </div>
 
@@ -223,7 +223,7 @@
       <!-- BÁSICO -->
       <div class="plan-card" id="plan-basico" onclick="selectPlan('basico')">
         <div class="plan-name">Básico</div>
-        <div class="plan-credits"><strong>12 créditos</strong> equivale a aproximadamente 3 sessões avançadas</div>
+        <div class="plan-credits"><strong>12 créditos</strong></div>
 
         <div class="plan-monthly-block">
           <div class="plan-monthly-label">Mensal</div>
@@ -254,7 +254,7 @@
       <div class="plan-card featured" id="plan-intermediario" onclick="selectPlan('intermediario')">
         <div class="popular-tag">⭐ Mais popular</div>
         <div class="plan-name">Intermediário</div>
-        <div class="plan-credits"><strong>24 créditos</strong> por mês · ~3,4 sessões avançadas</div>
+        <div class="plan-credits"><strong>24 créditos</strong> por mês</div>
 
         <div class="plan-monthly-block">
           <div class="plan-monthly-label">Mensal</div>
@@ -284,7 +284,7 @@
       <!-- AVANÇADO -->
       <div class="plan-card" id="plan-avancado" onclick="selectPlan('avancado')">
         <div class="plan-name">Avançado</div>
-        <div class="plan-credits"><strong>48 créditos</strong> por mês · ~6,8 sessões avançadas</div>
+        <div class="plan-credits"><strong>48 créditos</strong> por mês</div>
 
         <div class="plan-monthly-block">
           <div class="plan-monthly-label">Mensal</div>
@@ -445,12 +445,12 @@
 
 <script>
 const sliderData = [
-  { credits: 5,   discount: 0,  price: 135,  sessions: '~0,7', installments: null, instValue: null },
-  { credits: 10,  discount: 2,  price: 265,  sessions: '~1,4', installments: 2,    instValue: 133  },
-  { credits: 20,  discount: 5,  price: 513,  sessions: '~2,9', installments: 3,    instValue: 171  },
-  { credits: 40,  discount: 8,  price: 994,  sessions: '~5,7', installments: 4,    instValue: 249  },
-  { credits: 80,  discount: 10, price: 1944, sessions: '~11,4',installments: 5,    instValue: 389  },
-  { credits: 150, discount: 12, price: 3564, sessions: '~21,4',installments: 6,    instValue: 594  },
+  { credits: 5,   discount: 0,  price: 135,  sessions: '1', installments: null, instValue: null },
+  { credits: 10,  discount: 2,  price: 265,  sessions: '2', installments: 2,    instValue: 133  },
+  { credits: 20,  discount: 5,  price: 513,  sessions: '4', installments: 3,    instValue: 171  },
+  { credits: 40,  discount: 8,  price: 994,  sessions: '8', installments: 4,    instValue: 249  },
+  { credits: 80,  discount: 10, price: 1944, sessions: '16',installments: 5,    instValue: 389  },
+  { credits: 150, discount: 12, price: 3564, sessions: '30',installments: 6,    instValue: 594  },
 ];
 
 function fmt(n) { return 'R$ ' + n.toLocaleString('pt-BR'); }
@@ -476,7 +476,7 @@ function updateSlider(val) {
     : 'Sem desconto · Válido por 6 meses';
   document.getElementById('result-total').textContent = totalText;
   document.getElementById('badge-discount').textContent = d.discount > 0 ? '🏷️ ' + d.discount + '% de desconto' : '🏷️ Sem desconto';
-  document.getElementById('badge-sessions').textContent = '🏄 ' + d.sessions + ' sessões avançadas';
+  document.getElementById('badge-sessions').textContent = '🏄 ' + d.sessions + ' aulas básicas';
   document.getElementById('cta-avulso').textContent = 'Comprar ' + d.credits + ' créditos por ' + fmt(d.price) + ' →';
 
   document.querySelectorAll('.tick').forEach((t, i) => t.classList.toggle('active', i == val));
